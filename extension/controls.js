@@ -29,7 +29,6 @@
     window.addEventListener('keydown', e => {
       // list of forbidden keys: F11, Ctrl+W, Ctrl+Shift+I, Alt+F4
       const blocked = (
-        e.key === 'F11' ||
         (e.ctrlKey && e.key.toLowerCase() === 'w') ||
         (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase())) ||
         (e.altKey && e.key === 'F4')

@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     # Additional dependencies
     dbus-x11 \
     pulseaudio \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Set VNC password
@@ -38,6 +39,8 @@ COPY wait-for-x.sh /usr/local/bin/wait-for-x.sh
 RUN chmod +x /usr/local/bin/wait-for-x.sh
 COPY extension       /opt/launcher/extension
 COPY localindex.html      /opt/homescreen/index.html
+COPY start-supervisor.sh  /usr/local/bin/start-supervisor.sh
+RUN chmod +x /usr/local/bin/start-supervisor.sh
 
 # Create a non-root user
 RUN useradd -m -s /bin/bash watchparty \
@@ -51,5 +54,5 @@ RUN useradd -m -s /bin/bash watchparty \
 #    8080 = HLS web server
 EXPOSE 5900 6080 8080
 
-CMD ["/usr/bin/supervisord", "-n"]
+CMD ["/usr/local/bin/start-supervisor.sh"]
 # ────────────────────────────────────────────────────────────────
