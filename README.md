@@ -1,4 +1,4 @@
-# OSMC Party
+# WatchPartyThingy
 
 A containerized streaming party solution that allows you to watch content together with friends through a web browser. This project creates a virtual desktop environment with Chrome running in either kiosk or debug mode, accessible via VNC.
 
@@ -21,8 +21,8 @@ A containerized streaming party solution that allows you to watch content togeth
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/OSMCparty.git
-cd OSMCparty
+git clone https://github.com/jacobmobley/watchpartythingy.git
+cd watchpartythingy
 ```
 
 2. Run in kiosk mode (default):
