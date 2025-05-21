@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     supervisor \
     ffmpeg \
     nginx \
+    pulseaudio pulseaudio-utils \
     # noVNC and websockify
     novnc \
     websockify \
@@ -33,11 +34,14 @@ COPY nginx.conf       /etc/nginx/nginx.conf
 COPY hls-stream.sh    /usr/local/bin/hls-stream.sh
 RUN chmod +x /usr/local/bin/hls-stream.sh
 COPY index.html /usr/share/novnc/index.html
+COPY wait-for-x.sh /usr/local/bin/wait-for-x.sh
+RUN chmod +x /usr/local/bin/wait-for-x.sh
 
 # Create a non-root user
 RUN useradd -m -s /bin/bash watchparty \
     && echo "watchparty:watchparty" | chpasswd \
-    && usermod -aG sudo watchparty
+    && usermod -aG sudo watchparty \
+    && usermod -aG pulse,pulse-access watchparty
 
 # Expose ports:
 #    5900 = raw VNC
