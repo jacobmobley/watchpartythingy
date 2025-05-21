@@ -25,15 +25,20 @@ git clone https://github.com/jacobmobley/watchpartythingy.git
 cd watchpartythingy
 ```
 
-2. Run in kiosk mode (default):
-```bash
-./run_watchparty.sh
-```
+2. Run the application:
+   - For kiosk mode (default):
+   ```bash
+   ./run_watchparty.sh
+   ```
+   - For debug mode:
+   ```bash
+   ./run_watchparty.sh debug
+   ```
 
-3. Run in debug mode:
-```bash
-./run_watchparty.sh debug
-```
+The run script will automatically:
+- Build the Docker image
+- Stop any existing container
+- Start a new container with the appropriate configuration
 
 ## Accessing the Environment
 
@@ -55,25 +60,6 @@ When running in debug mode:
 - Chrome runs without kiosk mode
 - Environment variable `DEBUG_MODE=true` is set
 - Useful for development and testing
-
-### Building from Source
-
-1. Build the Docker image:
-```bash
-docker build -t watchparty .
-```
-
-2. Run the container:
-```bash
-docker run -d \
-    --name watchparty \
-    --shm-size=5g \
-    -p 5900:5900 \
-    -p 6080:6080 \
-    -p 8080:8080 \
-    -v wp-data:/data/chrome \
-    watchparty
-```
 
 ## Configuration
 
