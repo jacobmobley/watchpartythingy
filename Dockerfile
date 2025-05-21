@@ -36,6 +36,8 @@ RUN chmod +x /usr/local/bin/hls-stream.sh
 COPY index.html /usr/share/novnc/index.html
 COPY wait-for-x.sh /usr/local/bin/wait-for-x.sh
 RUN chmod +x /usr/local/bin/wait-for-x.sh
+COPY extension       /opt/launcher/extension
+COPY localindex.html      /opt/homescreen/index.html
 
 # Create a non-root user
 RUN useradd -m -s /bin/bash watchparty \
